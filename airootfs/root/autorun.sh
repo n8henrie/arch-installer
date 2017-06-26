@@ -3,15 +3,11 @@
 # wait for the network to come up
 while true
 do
-  ping -c1 bitbucket.org &> /dev/null && break
+  ping -c1 google.com &> /dev/null && break
 done
 
-# copy the ssh key used to authenticate to the repo
-cp -r ./rootfs-private/home/chendry/.ssh .
-chmod 600 .ssh/*
-
 # clone the repository
-git clone git@bitbucket.org:chendry/arch-installer.git
+git clone https://github.com/n8henrie/arch-installer.git
 
 # run each installation script in sequence, logging the results
 mkdir logs
@@ -21,4 +17,3 @@ do
   echo $i
   bash -x $i &>> ~/logs/${i%.sh}.out
 done
-
