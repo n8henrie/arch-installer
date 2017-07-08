@@ -4,12 +4,14 @@ help:
 	@grep --only-matching --word-regexp '^[^[:space:].]*:' Makefile | sed 's|:[[:space:]]*||'
 
 image: clean
-	cp -r /var/cache/pacman/pkg ./airootfs/root/packages
-	cp packages.both ./airootfs/root/packages/
+	rsync --archive --delete \
+		packages.both \
+		/var/cache/pacman/pkg/* \
+		./airootfs/root/packages
 	sudo ./build.sh -v
 
 clean: 
-	sudo rm -rf ./work ./out
+	sudo rm -rf ./work ./out ./airootfs/root/packages
 
 usb:
 	@echo "Replace sdX with the destination device:"

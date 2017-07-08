@@ -24,6 +24,7 @@ pass
 perl-rename
 python
 python-pip
+reflector
 ripgrep
 rsync
 tcpdump
