@@ -6,6 +6,7 @@ bash-completion
 bc
 dhcpcd
 dialog
+etckeeper
 gptfdisk
 git
 gnu-netcat
